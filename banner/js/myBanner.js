@@ -6,6 +6,7 @@
  * @automatic：Sets whether to scroll
  * @control：Sets whether to display controls
  * @Time：Set scroll time
+ * @screen：Set Full screen
  *
  * rely：jQuery
  */
@@ -23,8 +24,13 @@
 
             var BannerWidth = parseInt(this.children().first().children().css('width'));//获取宽度
             var Bannerheight = parseInt(this.children().first().children().css('height'));//获取高度
-            var windowWidth = parseInt($(window).width());
-            var w = (BannerWidth-windowWidth) / 2;//计算图片的居中位置
+
+            if (opts.screen) {
+                var windowWidth = parseInt($(window).width()); //1432
+                var w = (BannerWidth-windowWidth) / 2;//计算图片的居中位置 1920-1432 / 2
+            } else {
+                var w = 0
+            }
 
             /*设置显示控件*/
             if(opts.control){
@@ -120,9 +126,10 @@
 
     //默认参数
     var settings = {
-        automatic: true,  //设置是否自动滚动,如果是false就要通过num或者左右控件来切换左右滚动
-        control: true,    //设置是否显示左右控件
-        Time:2000         //设置banner过度时间
+        automatic: true,  // 设置是否自动滚动,如果是false就要通过num或者左右控件来切换左右滚动
+        control: true,    // 设置是否显示左右控件
+        Time: 2000,       // 设置banner过度时间
+        screen: true      // 设置是不是全屏true 为全屏
     };
 
 })(jQuery);
