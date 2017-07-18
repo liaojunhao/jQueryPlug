@@ -14,3 +14,6 @@ control：设置是否显示控件
 <p>
 automatic：设置是否自动滚动
 </p>
+<p>
+screen：设置是否全屏
+</p>
